@@ -1,0 +1,42 @@
+Imagenes mostrar
+<script type="text/javascript">
+let imageList=document.createElement('ul')
+const theHeaders= new Headers()
+theHeaders.append('authorization', 'Bearer ' + localStorage.getItem('token'))
+
+console.log('template imagesshow')
+
+fetch('http://localhost:3001/api/images' , {
+  method: 'GET',
+  headers: theHeaders
+})
+.then(function(res){
+  console.log('fetch images')
+
+
+  var obj=res.json()
+    console.log(res)
+    console.log(obj)
+
+    if(0){
+      respuesta.images.map(
+        image => {
+          let text = document.createTextMode(image.name)
+          let elem = document.createElement('li')
+          elem.appendChild(text)
+          imageList.appendChild(elem)
+
+        })
+    }
+
+  document.body.appendChild(imageList)
+})
+
+
+.then(function (data){
+  console.log('recibiendo imagenes')
+    console.log(data)
+
+})
+
+</script>

@@ -1,0 +1,26 @@
+Log in
+
+<form id="login" method="POST">
+<input type="email" name="email" value="ajksdfh@afdklj.es">
+<input type="password" name="password" value="123456">
+<input type="submit" value="LOGIN">
+
+</form>
+<script type="text/javascript">
+const formLogin = document.querySelector('#login')
+const formData = new FormData(formLogin)
+
+formLogin.addEventListener('submit', event=>{
+  event.preventDefault()
+  fetch('http://localhost:3001/api/login',{
+    method:'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+localStorage.setItem('token',data.token)
+    console.log(data)
+  })
+})
+
+</script>
